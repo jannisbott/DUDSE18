@@ -1,0 +1,9 @@
+<aura:component description="CompositionApexCallGeneric">
+
+    <aura:method access="public" name="doCallApex" action="{!c.callApex}">
+        <aura:attribute name="sourceComponent" type="Aura.Component" />
+        <aura:attribute name="methodName" type="String" />
+        <aura:attribute name="actionParameters" type="Object" />
+        <aura:attribute name="callbackFunction" type="Object" />
+    </aura:method>
+</aura:component>

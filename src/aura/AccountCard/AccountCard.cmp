@@ -1,0 +1,19 @@
+<aura:component description="AccountCard">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="account" type="Object" access="public"/>
+
+    <!-- ACCOUNT TILE -->
+    <aura:if isTrue="{!not(empty(v.account))}">
+        <lightning:card title="Account"
+                        iconName="standard:account"
+                        class="slds-m-vertical--medium">
+            <div class="slds-m-horizontal--medium">
+                <p>{!v.account.Name}</p>
+                <p>{!v.account.BillingStreet + ', ' + v.account.BillingCity + ' ' + v.account.BillingState + ' ' + v.account.BillingPostalCode + ', ' + v.account.BillingCountry}</p>
+                <p>{!v.account.Type}</p>
+                <p>{!v.account.Industry}</p>
+            </div>
+        </lightning:card>
+    </aura:if>
+</aura:component>

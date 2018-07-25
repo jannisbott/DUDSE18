@@ -1,0 +1,20 @@
+<aura:component description="ContactCard">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="contact" type="Object"/>
+
+    <!-- CONTACT TILE -->
+    <aura:if isTrue="{!not(empty(v.contact))}">
+        <lightning:card title="Contact"
+                        iconName="standard:contact"
+                        class="slds-m-vertical--medium">
+            <div class="slds-m-horizontal--medium">
+                <p>{!v.contact.FirstName +  ' ' + v.contact.LastName}</p>
+                <p>{!v.contact.Title}</p>
+                <p>{!v.contact.MailingStreet + ', ' + v.contact.MailingCity + ' ' + v.contact.MailingState + ' ' + v.contact.MailingPostalCode + ', ' + v.contact.MailingCountry}</p>
+                <p>{!v.contact.Email}</p>
+                <p>{!v.contact.MobilePhone}</p>
+            </div>
+        </lightning:card>
+    </aura:if>
+</aura:component>

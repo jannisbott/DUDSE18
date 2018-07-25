@@ -1,0 +1,36 @@
+<aura:component description="CompositionModal"
+                controller="DUDSE18Service">
+
+    <c:CompositionApexCallGeneric aura:id="serviceCallComponent"/>
+
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="type" type="String"/>
+    <aura:method access="public" name="showAlert" action="{!c.getErrorAlert}">
+        <aura:attribute name="alertKey" type="String"/>
+    </aura:method>
+
+    <!-- MARKUP -->
+    <aura:if isTrue="{!not(empty(v.message))}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                 aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick="{!c.closeModal}">
+                        <lightning:icon iconName="utility:close" variant="inverse" size="x-small"/>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-align--absolute-center slds-m-top--large">
+                        <lightning:icon iconName="{!'utility:'+ v.type}" alternativeText="Error"/>
+                    </div>
+                    <p class="slds-align--absolute-center slds-m-around--medium">
+                        <lightning:formattedText class="slds-text-body_regular" value="{!v.message}"/>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

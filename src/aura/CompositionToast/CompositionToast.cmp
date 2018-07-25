@@ -1,0 +1,27 @@
+<aura:component description="CompositionToast"
+                controller="DUDSE18Service">
+
+    <c:CompositionApexCallGeneric aura:id="serviceCallComponent"/>
+
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="type" type="String"/>
+    <aura:method access="public" name="showAlert" action="{!c.getErrorAlert}">
+        <aura:attribute name="alertKey" type="String"/>
+    </aura:method>
+
+    <aura:if isTrue="{!not(empty(v.message))}">
+        <div class="{!'slds-notify slds-notify_toast slds-theme_' + v.type}" role="alert">
+        <span class="{!'slds-icon_container slds-m-right_small slds-no-flex slds-align-top slds-icon-utility-' + v.type}">
+            <lightning:icon iconName="{!'utility:' + v.type}" size="xx-small" variant="inverse"/>
+        </span>
+            <div class="slds-notify__content">
+                <h2 class="slds-text-heading_small ">{!v.message}</h2>
+            </div>
+            <button class="slds-button slds-button_icon slds-notify__close slds-button_icon-inverse" title="Close"
+                    onclick="{!c.closeToast}">
+                <lightning:icon iconName="utility:close" size="xx-small" variant="inverse"/>
+                <span class="slds-assistive-text">Close</span>
+            </button>
+        </div>
+    </aura:if>
+</aura:component>

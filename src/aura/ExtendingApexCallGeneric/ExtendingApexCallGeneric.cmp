@@ -1,0 +1,30 @@
+<aura:component description="ExtendingApexCallGeneric"
+                extends="c.AbstractApexCallGeneric"
+                implements="flexipage:availableForAllPageTypes"
+                controller="DUDSE18Service"
+                access="public">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="account" type="Object"/>
+    <aura:attribute name="contact" type="Object"/>
+
+    <!-- BUTTONS -->
+    <lightning:layout multipleRows="true" horizontalAlign="spread">
+        <lightning:layoutItem size="8" padding="horizontal-small">
+            <lightning:input aura:id="accountName" label="Account Name" type="text" required="true" value="Sydney Salesforce Developer Group"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" padding="horizontal-small">
+            <lightning:button title="Get Account" label="Get Account" onclick="{!c.getSampleAccount}" class="button-margin"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="8" padding="horizontal-small">
+            <lightning:input aura:id="contactEmail" label="Contact Email" type="email" required="true" value="email@jannis-bott.com"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="4" padding="horizontal-small">
+            <lightning:button title="Get Contact" label="Get Contact" onclick="{!c.getSampleContact}" class="button-margin"/>
+        </lightning:layoutItem>
+    </lightning:layout> 
+
+    <!-- ACCOUNT/CONTACT CARD -->
+    <c:AccountCard account="{!v.account}" />
+    <c:ContactCard contact="{!v.contact}" />
+</aura:component>
